@@ -1,0 +1,351 @@
+@body-font-size: 16px;  /* In pixels */
+@body-font-size-int: `parseInt("@{body-font-size}")`;
+
+@body-line-height: 1.618;
+@body-line-height-px: ceil(@body-line-height * @body-font-size);
+@body-line-height-int: `parseInt("@{body-line-height-px}")`;
+
+@scale-factor: 1.618;
+
+@body-line-width-opt: ~`Math.pow(parseInt("@{body-font-size}") * @{body-line-height}, 2) * (1 + 2*@{body-line-height} * (parseInt("@{body-line-height-px}") / parseInt("@{body-font-size}") - @{body-line-height}) ) + 'px'`;
+
+
+  
+  /*
+   *    Font-size mixins
+   * 
+   */
+
+  .font-size (@size) when (@size < @body-line-height-px)  { 
+    	font-size: @size;
+    	
+    	@this-font-size-int: `parseInt("@{size}")`;
+    	
+    	@this-line-height: `@{body-line-height-int} / @{this-font-size-int}`;
+    	line-height: @this-line-height;
+    	
+    	margin-top: ~`@{this-line-height} + 'em'`;
+    	margin-bottom: ~`@{this-line-height} + 'em'`;
+  }
+  
+  .font-size (@size) when (@size = @body-line-height-px ) {
+      @this-font-size: ceil(@size); 
+      font-size: @this-font-size;
+      
+      @this-line-height: 1;
+     
+      @this-line-height-px: @this-line-height * @this-font-size;
+      line-height: @this-line-height;
+      
+      @this-line-height-int: `parseInt("@{this-line-height-px}")`;
+      @this-font-size-int: `parseInt("@{this-font-size}")`;
+      
+      
+      @margin-base: `Math.floor(@{this-font-size-int} * @{scale-factor})`;
+      @padding: `Math.floor(@{body-line-height-int} - (@{this-line-height-int} + @{margin-base}) % @{body-line-height-int})`;
+      
+      margin-top: ~`(@{margin-base} + @{padding}) + 'px'`;
+      margin-bottom: ~`(@{margin-base} + @{padding}) + 'px'`;
+  }
+  
+  
+  .font-size (@size) when (@size > @body-line-height-px ) {
+      @this-font-size: ceil(@size); 
+      font-size: @this-font-size;
+      
+      @this-line-height: 1.2;
+     
+      @this-line-height-px: @this-line-height * @this-font-size;
+      line-height: @this-line-height;
+      
+      @this-line-height-int: `parseInt("@{this-line-height-px}")`;
+      @this-font-size-int: `parseInt("@{this-font-size}")`;
+      
+      
+      @margin-base: `Math.floor(@{this-font-size-int} * @{scale-factor})`;
+     
+      @padding: `Math.floor(@{body-line-height-int} - (@{this-line-height-int} + 2 * @{margin-base}) % @{body-line-height-int}) / 2`;
+      
+      margin-top: ~`(@{margin-base} + @{padding}) + 'px'`;
+      margin-bottom: ~`(@{margin-base} + @{padding}) + 'px'`;
+  }
+    
+
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+
+html {
+	margin:0;
+	padding:0;
+	color: #222;
+  line-height: @body-line-height-px;
+	text-rendering: optimizeLegibility;
+}
+
+BODY {
+  margin: 0;
+  padding: 0;
+	font-size: @body-font-size;
+	font-family: 'skolar regular', georgia, serif;
+}
+
+
+ABBR, ACRONYM, .caps {
+	text-transform: lowercase;
+	font-variant: small-caps;
+	font-style: normal;
+	border-bottom: 0;
+	letter-spacing: 0.1em;
+}
+
+cite, CITE ABBR, CITE ACRONYM, CITE .caps, em {
+	font-style: italic;
+	font-family: 'skolar italic', georgia, serif;
+}
+
+strong {
+	font-family: 'skolar bold', georgia, serif;
+	font-weight: bold;	
+}
+
+img {
+	border: 0;
+}
+
+img.left {
+  float: left;
+  margin-top: 0.4em;
+  margin-right: 1.5em;
+}
+
+img.right {
+  float: left;
+  margin-top: 0.4em;
+  margin-left: 1.5em;
+}
+
+
+h1, h2, h3 {
+	font-family: 'Pierpont', 'Plantin', 'Plantin Std', 'Hoefler Text', 'times new roman', serif;
+	font-size-adjust: 0.441;
+}
+
+a, a:visited, a:link, a:active, a:hover {
+	color: #00408F;
+	text-decoration: underline;
+}
+a:visited {
+	color:#666;
+}
+
+html>body a, html>body a:visited, html>body a:link, html>body a:active, html>body a:hover {
+	/* Need to hide borders on links from IE6 due to text-jog bug */
+	text-decoration: none;
+	border-bottom: 1px solid #F2ECDA;
+}
+
+html>body a:active, html>body a:hover {
+	border-bottom: 1px solid #999;
+}
+
+
+
+H1 {
+	font-weight: normal;	
+	.font-size (ceil(@body-font-size * @scale-factor * @scale-factor) );
+}
+
+H2 {
+	font-weight: normal;
+	.font-size(ceil(@body-font-size * @scale-factor));
+}
+
+H3 {
+	font-weight: normal;
+	@this-font-size:  ~`Math.floor(parseInt("@{body-font-size}") * Math.sqrt(@{scale-factor})) +'px'`;
+	.font-size( @this-font-size );
+}
+
+H4 {
+	font-weight: normal;
+	font-size: 1em;
+	margin: 0.6875em 0;
+}
+
+
+
+BLOCKQUOTE {
+	margin: 0em + @body-line-height 0;
+	font-style: italic;
+	font-family: 'skolar italic', georgia, serif;
+}
+
+UL, OL, DL {
+	margin: 0em + @body-line-height 0 0em + @body-line-height 0;
+}
+
+LI, DD, DT {
+	margin: 0;
+}
+
+DD {
+	margin-left: 0em + @body-line-height;
+}
+
+P {
+	margin-top: 0em + @body-line-height;
+	margin-bottom: 0;
+}
+
+P + P {
+	margin-top: 0;
+	text-indent: 0em + @body-line-height;
+}
+
+
+p.imgholder {
+	margin-top: 0em + @body-line-height;
+	margin-bottom: 0em + @body-line-height;
+	text-align: center;
+	text-indent: 0;
+}
+
+Q {
+font-style:italic;
+quotes: '\2018' '\2019' '\201C' '\201D';
+	font-family: 'skolar italic', georgia, serif;
+}
+
+Q:before {
+content: '\2018';
+}
+
+Q:after {
+content: '\2019';
+}
+
+HTML > BODY Q {
+font-style:normal;
+}
+
+BODY BLOCKQUOTE Q {
+	font-style:italic;
+}
+
+CODE {
+	font-family: 'lucida console', 'andale mono', 'monotype.com', monospace;
+	font-size: 0.9em;
+}
+
+p code, tr code {
+  line-height: 1;
+}
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  line-height: 0.9;
+}
+
+code code {
+	font-size: 1em;
+}
+
+PRE {
+	margin: 0em + @body-line-height 0 0em + @body-line-height 0em + @body-line-height;
+}
+
+
+PRE code {
+  font-size: 1em !important;
+}
+
+
+BLOCKQUOTE EM {
+	font-style: normal;
+	font-family: 'skolar regular', georgia, serif;
+}
+
+UL UL, OL OL {
+	margin-left: 0em + @body-line-height;
+}
+
+H1 A:link, H1 A:visited, H1 A:hover, H1 A:active {
+	color: #333;
+	border: 0;
+}
+
+H2 A:link, H2 A:visited, H2 A:hover, H2 A:active{
+	text-decoration:none;
+	color: #fff;
+	border: 0;
+}
+
+
+
+
+
+/*
+ *    Tables TBD later
+ * 
+ */
+
+table {
+  margin: 0em + @body-line-height 0 0em + @body-line-height 0;
+  width: 100%;
+  border-spacing: 0 !important;
+  border-collapse: collapse;
+  /*border-top: 1px solid black;
+  border-bottom: 1px solid black;*/
+}
+
+table thead {
+  font-weight: bold;
+}
+
+table tr {
+    line-height: @body-line-height;
+}
+
+/*  End   */
+
+
+
+/*
+ *    Forms TBD later
+ * 
+ */
+
+FORM {
+	margin: 0 0 0em + @body-line-height 0;
+}
+FORM DT {
+	margin:1em 0 0 0;
+}
+FORM DD {
+	margin: 0 0 1em 0;
+}
+
+INPUT, TEXTAREA {
+	font: 1.0em/1.375em georgia, "times new roman", serif;
+}
+
+INPUT.textbox, TEXTAREA {
+	border: 1px solid #999;
+	font: 1.0em/1.375em georgia, "times new roman", serif;
+	width:100%;
+}
+
+INPUT.button {
+	border-width: 1px;
+}
+
+/* End */
