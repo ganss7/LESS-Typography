@@ -5,7 +5,7 @@
 @body-line-height-px: ceil(@body-line-height * @body-font-size);
 @body-line-height-int: `parseInt("@{body-line-height-px}")`;
 
-@scale-factor: 1.618;
+@scale-factor: 1.618; /* Multiplier for setting headings font size */
 
 @body-line-width-opt: ~`Math.pow(parseInt("@{body-font-size}") * @{body-line-height}, 2) * (1 + 2*@{body-line-height} * (parseInt("@{body-line-height-px}") / parseInt("@{body-font-size}") - @{body-line-height}) ) + 'px'`;
 
