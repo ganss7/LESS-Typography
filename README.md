@@ -10,7 +10,7 @@ Obviously, you will need [LESS](http://lesscss.org/) to use LESS Typography.
 You only need to set the body font size, body line height and scale factor at the beginning of *typography.less* file. 
 
 ## Example
-[See sample page](http://ganss7.github.com/LESS-Typography/)
+See [sample page](http://ganss7.github.com/LESS-Typography/)
 
 ## Contributing
 Everyone is welcome to create a Sass version.
@@ -22,5 +22,6 @@ Tools and sources used to create LESS Typography:
 &#8192;&#8192;LESS Typography is based on stylesheet from this resource.
 * [Secret Symphony: The Ultimate Guide to Readable Web Typography](http://www.pearsonified.com/2011/12/golden-ratio-typography.php)
 * [Gridlover](http://www.gridlover.net/)
+* [Scaling with EM units](http://viljamis.com/blog/2012/scaling-with-em-units/)
 * [More Meaningful Typography](http://www.alistapart.com/articles/more-meaningful-typography/)
 * [Typograph](http://lamb.cc/typograph/)
