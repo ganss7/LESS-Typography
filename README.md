@@ -9,6 +9,9 @@ Obviously, you will need [LESS](http://lesscss.org/) to use LESS Typography.
 ## Usage
 You only need to set the body font size, body line height and scale factor at the beginning of *typography.less* file. 
 
+## Example
+[See sample page](http://ganss7.github.com/LESS-Typography/)
+
 ## Contributing
 Everyone is welcome to create a Sass version.
 
