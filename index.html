@@ -1,1 +1,101 @@
-My GitHub Page
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		<link rel="stylesheet/less" type="text/css" href="Styles/style.less">
+		<script src="JS/less-1.3.0.min.js" type="text/javascript"></script>
+		
+		<!--<script src="JS/jquery.js"></script>
+		<script src="JS/jquery.baselinealign-1.0.js"></script>
+		
+		<script>
+			$(window).load(function(){
+		  		$("img").baselineAlign();
+		  });
+		</script>-->
+		
+		<title>Super awesome typography</title>
+	</head>
+	<body>
+		<div id="main">
+			<h1>Typography Lessons</h1>
+			<h2><span>2.2.1 </span>Choose a basic leading that suits the typeface, text and&nbsp;measure</h2>
+			<blockquote class="quote-from-book">
+				<p>
+					<span class="ic">“</span>Vertical space is metered in a different way <span class="bracket">[</span>to horizontal space<span class="bracket">]</span>. You must choose not only the overall measure – the depth of the column or page – but also a basic rhythmical unit. This unit is the leading, which is the distance from one baseline to the next.”
+				</p>
+			</blockquote>
+			<p>
+				Leading <span class="bracket">(</span>pronounced “ledding”<span class="bracket">)</span> is so called because, in mechanical presses, strips of lead are placed between lines of type to space the lines apart. Leading is achieved in <abbr title="Cascading Style Sheets">CSS</abbr> through the <code>
+					line-height</code>
+				property. For example 12&nbsp;point text can be given 3&nbsp;points of lead in the following&nbsp;manner:
+			</p>
+			<pre><code>p {
+  font-size: 12pt;
+  line-height: 15pt }</code></pre>
+  			<h3>Heading 3</h3>
+  			
+			<p>
+				<!--<img src="images/thumbnails/test.jpg" alt="test photograph" class="left" />-->
+				However <strong>that example is bad</strong> as <code>line-height</code>
+				should never be applied using absolute units such as points or pixels. In the prior example, when text is resized in a browser, the font-size increases <span class="bracket">(</span>to 18&nbsp;pt for example<span class="bracket">)</span> but the line-height may remain at 15&nbsp;pt. So instead of the lines being spaced apart, they would actually&nbsp;overlap.
+				
+			</p>
+			<p>
+				A better approach is to make use of a unique characteristic of the <code>
+					line-height</code>
+				property: it is the only <abbr title="Cascading Style Sheets">CSS</abbr> property for which non-zero numeric values are allowed without units. The preceding example could also be coded&nbsp;as:
+			</p>
+			<pre><code>p {
+  font-size: 12pt;
+  line-height: 1.25 }</code></pre>
+  			<h4>Heading 4</h4>
+  			<!--<img src="images/test.jpg" alt="test photograph" class="dc_full" />-->
+			<p>
+				In this example the value of <code>
+					line-height</code>
+				is a multiplier: 1.25&nbsp;x 12 = 15&nbsp;pt. This is a far more reliable method as the line-height <span class="bracket">(</span>the distance between baselines<span class="bracket">)</span> will always be proportional to the text size. Line height can be incorporated into the <code>
+					font</code>
+				property using a shorthand familiar to&nbsp;typographers:
+			</p>
+			<pre><code>p {
+  font: 12pt/1.25 "Minion Pro", "Minion Web", serif }</code></pre>
+  			<!--<div class="popup dc_small dc_left captioned">
+				<a href="images/test.jpg">
+					<img src="images/thumbnails/test.jpg" alt="test photograph" />
+				</a>
+				<p class="caption"><a href="http://www.flickr.com/photos/mattwilcox/6602174393/">Becca in Red</a> by Matt Wilcox</p>
+			</div>-->
+			<p>
+				It should be noted that some browsers add a little leading by default: Safari and Internet Explorers for example; whereas others, such as Camino and Firefox, do not. Text on the web almost always benefits from an increase in line height, and figures upwards of 1.3&nbsp;are common <span class="bracket">(</span>this page has a <code>
+					line-height</code>
+				of 1.5&nbsp;for&nbsp;example<span class="bracket">)</span>.
+			</p>
+			<p>
+				Unlike in mechanical presses, where one line of lead is added below the text, the spacing added on the Web is divided equally above and below the text. To illustrate this the following example has a <code>
+					line-height</code>
+				of 3&nbsp;and shows the text sat midway between two&nbsp;borders:
+			</p>
+			<div class="example">
+				<div class="ex2-2-1i">
+					line-height spacing is added equally above and below the text
+				</div>
+			</div>
+			<p>
+				Negative leading, in other words a <code>
+					line-height</code>
+				value of less than 1, can be used on short pieces of text provided care is taken to ensure ascenders and descenders do not collide. For&nbsp;example:
+			</p>
+			<pre><code>.example {
+  font-size: 1.5em;
+  line-height: 0.85;
+  text-indent: -0.5em }</code></pre>
+			
+		</div>
+		<!-- /main -->
+	</body>
+</html>
+
